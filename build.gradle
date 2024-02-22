@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.portswigger.burp.extensions:montoya-api:+'
+    implementation 'org.json:json:20231013'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'org.recorder.Recorder'
+        )
+    }
+
+    destinationDirectory.set(file("$rootDir"))
+    archiveFileName = "Recorder.jar"
+}
+
+test {
+    useJUnitPlatform()
+}
